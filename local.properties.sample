@@ -1,0 +1,4 @@
+#
+# Please set correct path to Android SDK and
+# rename copy file to local.properties
+sdk.dir=/opt/android-studio/sdk

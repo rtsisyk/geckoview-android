@@ -1,0 +1,2 @@
+include ':geckoview_library'
+include ':example'
