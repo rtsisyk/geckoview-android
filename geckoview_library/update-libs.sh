@@ -3,10 +3,12 @@
 sync() {
 	EXAMPLE=$1
 	LIBRARY=$2
-	rsync -tv ${EXAMPLE}/assets/* ./src/main/assets/
 	rsync -rtv ${LIBRARY}/res/ ./src/main/res/
 	rsync -tv  ${LIBRARY}/libs/*.jar ./libs/
 	ARCH=$(basename ${LIBRARY}/libs/*/)
+	mkdir -p ./src/main/assets/${ARCH}
+	rsync -tv ${EXAMPLE}/assets/${ARCH}/* ./src/main/assets/${ARCH}
+	rsync -tv ${EXAMPLE}/assets/omni.ja ./src/main/assets/omni.ja
 	mkdir -p ./src/main/jniLibs/${ARCH}
 	# Cleanup other architectures
 	for a in $(find ./src/main/jniLibs/ -mindepth 1 -maxdepth 1 -type d); do
